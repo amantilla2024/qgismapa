@@ -12,7 +12,7 @@
         <link rel="stylesheet" href="css/fontawesome-all.min.css">
         <style>
         #map {
-            width: 676px;
+            width: 778px;
             height: 484px;
         }
         </style>
@@ -31,10 +31,12 @@
         <script src="js/rbush.min.js"></script>
         <script src="js/labelgun.min.js"></script>
         <script src="js/labels.js"></script>
+        <script src="data/Estados_de_Vzla_1.js"></script>
+        <script src="data/Esequibo2_2.js"></script>
         <script>
         var map = L.map('map', {
             zoomControl:true, maxZoom:28, minZoom:1
-        }).fitBounds([[-105671.61224120436,-8377945.017012307],[1666382.9129330567,-5900009.851104731]]);
+        }).fitBounds([[-9.685057381785114,-79.24848704034804],[16.250533146956748,-37.060480521542665]]);
         var hash = new L.Hash(map);
         map.attributionControl.setPrefix('<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a> &middot; <a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> &middot; <a href="https://qgis.org">QGIS</a>');
         var autolinker = new Autolinker({truncate: {length: 30, location: 'smart'}});
@@ -76,6 +78,126 @@
         });
         layer_OSMStandard_0;
         map.addLayer(layer_OSMStandard_0);
+        function pop_Estados_de_Vzla_1(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['osm_id'] !== null ? autolinker.link(feature.properties['osm_id'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['boundary'] !== null ? autolinker.link(feature.properties['boundary'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['admin_level'] !== null ? autolinker.link(feature.properties['admin_level'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['parents'] !== null ? autolinker.link(feature.properties['parents'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['name'] !== null ? autolinker.link(feature.properties['name'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['local_name'] !== null ? autolinker.link(feature.properties['local_name'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['name_en'] !== null ? autolinker.link(feature.properties['name_en'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+            var popup = layer.getPopup();
+            var content = popup.getContent();
+            var updatedContent = removeEmptyRowsFromPopupContent(content, feature);
+            popup.setContent(updatedContent);
+        }
+
+        function style_Estados_de_Vzla_1_0() {
+            return {
+                pane: 'pane_Estados_de_Vzla_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(213,180,60,1.0)',
+                interactive: true,
+            }
+        }
+        map.createPane('pane_Estados_de_Vzla_1');
+        map.getPane('pane_Estados_de_Vzla_1').style.zIndex = 401;
+        map.getPane('pane_Estados_de_Vzla_1').style['mix-blend-mode'] = 'normal';
+        var layer_Estados_de_Vzla_1 = new L.geoJson(json_Estados_de_Vzla_1, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_Estados_de_Vzla_1',
+            layerName: 'layer_Estados_de_Vzla_1',
+            pane: 'pane_Estados_de_Vzla_1',
+            onEachFeature: pop_Estados_de_Vzla_1,
+            style: style_Estados_de_Vzla_1_0,
+        });
+        bounds_group.addLayer(layer_Estados_de_Vzla_1);
+        map.addLayer(layer_Estados_de_Vzla_1);
+        function pop_Esequibo2_2(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['osm_id'] !== null ? autolinker.link(feature.properties['osm_id'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['boundary'] !== null ? autolinker.link(feature.properties['boundary'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['admin_level'] !== null ? autolinker.link(feature.properties['admin_level'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['parents'] !== null ? autolinker.link(feature.properties['parents'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['name'] !== null ? autolinker.link(feature.properties['name'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['local_name'] !== null ? autolinker.link(feature.properties['local_name'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['name_en'] !== null ? autolinker.link(feature.properties['name_en'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+            var popup = layer.getPopup();
+            var content = popup.getContent();
+            var updatedContent = removeEmptyRowsFromPopupContent(content, feature);
+            popup.setContent(updatedContent);
+        }
+
+        function style_Esequibo2_2_0() {
+            return {
+                pane: 'pane_Esequibo2_2',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(227,26,28,1.0)',
+                interactive: true,
+            }
+        }
+        map.createPane('pane_Esequibo2_2');
+        map.getPane('pane_Esequibo2_2').style.zIndex = 402;
+        map.getPane('pane_Esequibo2_2').style['mix-blend-mode'] = 'normal';
+        var layer_Esequibo2_2 = new L.geoJson(json_Esequibo2_2, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_Esequibo2_2',
+            layerName: 'layer_Esequibo2_2',
+            pane: 'pane_Esequibo2_2',
+            onEachFeature: pop_Esequibo2_2,
+            style: style_Esequibo2_2_0,
+        });
+        bounds_group.addLayer(layer_Esequibo2_2);
+        map.addLayer(layer_Esequibo2_2);
         setBounds();
         </script>
     </body>
